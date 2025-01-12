@@ -1,11 +1,12 @@
 import withMT from "@material-tailwind/react/utils/withMT";
 import daisyui from "daisyui";
+import { Flowbite } from "flowbite-react";
  
 export default withMT({
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx }",],
   theme: {
     screens: {
-      'sm': '356px',
+      'sm': '100px',
       // => @media (min-width: 576px) { ... }
 
       'md': '760px',
@@ -38,6 +39,7 @@ export default withMT({
   },
   plugins: [
   daisyui,
+  Flowbite
   
   ],
   

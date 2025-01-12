@@ -8,10 +8,12 @@ import oc7 from "../assets/ourcollections/oc7.png";
 import oc8 from "../assets/ourcollections/oc8.png";
 
 function OurCollections() {
+
+  
   return (
-    <div>
-      <div className="bg-white">
-        <div className="absolute flex justify-center text-4xl items-center w-full sm:pt-14 md:pt-48 font-SpicyRice font-extralight text-white  font-extralightd p-5">
+    <div id="OurCollections">
+      <div  className="bg-white">
+        <div className="absolute flex justify-center sm:text-[50px] md:text-[100px] items-center w-full sm:py-20 md:py-48 font-SpicyRice font-extralight text-white  font-extralightd p-5">
           Our Collections
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-auto w-full" viewBox="0 0 1440 320">
@@ -23,8 +25,8 @@ function OurCollections() {
         </svg>
       </div>
 
-      <div className=" bg-meroon text-burgendi ">
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 place-items-center gap-x-3 gap-y-10 ">
+      <div className=" bg-meroon text-burgendi py-20">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 place-items-center  gap-x-3 gap-y-10 ">
           {" "}
           <div className="   rounded-2xl h-64 w-80 gap-y-8 font-SpicyRice font-extralightd flex flex-col justify-center items-center  ">
             <img src={oc1} className="w-32 h-32 rounded-3xl animate-bounce" />

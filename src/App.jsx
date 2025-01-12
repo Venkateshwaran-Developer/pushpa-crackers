@@ -9,13 +9,17 @@ import Newsletter from './components/Newsletter'
 import OurCollections from './components/OurCollections'
 import OurServices from './components/OurServices'
 import WhyUs from './components/WhyUs'
+import AboutUs from './components/AboutUs'
+import ContactUs from './components/ContactUs'
 
 function App() {
 
   return (
-    <>
+    <div className='w-full h-full overflow-hidden'>
       <Header/>
       <WhyUs/>
+      <AboutUs/>
+      <ContactUs/>
       <Brands/>
       <OurCollections/>
       <OurServices/>
@@ -23,7 +27,7 @@ function App() {
       <Marqueetag/>
       <Faq/>
       <Footer/>
-    </>
+    </div>
   )
 }
 

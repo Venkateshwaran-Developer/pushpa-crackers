@@ -4,52 +4,93 @@ import {
   FaBars
 } from "react-icons/fa"; // Import icons from react-icons
 import logo from '../assets/pc_logo.png';
+import emailjs from '@emailjs/browser';
+import { ToastContainer, toast } from 'react-toastify';
 
-function WaitingList() {
+function Header() {
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
     const [isOpen, setIsOpen] = useState(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [purpose, setPurpose] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const serviceId = "service_o1ji7yd";
+    const templateId = "template_n9u6cmp";
+    const publicKey = "24DQFIBUGvx7FbHuj";
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      from_phone: phone,
+      from_purpose: purpose,
+      to_name: "Pushpa Crackers",
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      setName('');
+      setEmail('');
+      setPhone('');
+      setPurpose('');
+      toast.success('Response Submitted Successfully')
+    }
+    )
+    .catch((error) => {
+      console.log('FAILED...', error);
+    });
+
+
+
+
+
+  }
+
+
   return (
-    <div className="">
+    <div id="home" className="  transform w-[100%] h-[100%]">
       <video className="w-[100%] h-[100vh] object-cover blur-[5px] " autoPlay loop muted>
         <source src={bg_video} type="video/webm" />
       </video>
       
-      <header className="absolute font-SpicyRice font-normal bg-transparent  w-full h-auto justify-between top-0 z-50 ">
-        <div className=" mx-auto px-5 w-full flex flex-row justify-between items-center">
-          <div className=" h-16 w-16 text-white">
-            <img src={logo} />
-          </div>
-          <nav className="text-white hidden lg:flex justify-between space-x-4 ml-5 mr-5">
-            <a
-              href="#"
-              className="flex items-center
-          "
-            >
-              Products
+      <header className=" absolute font-SpicyRice  font-normal bg-transparent  w-full h-auto  top-0 z-50 ">
+        <div className=" mx-auto px-5 w-full flex flex-row justify-around items-center">
+          <a href="#"  className=" h-16 w-16 text-white">
+            <img src={logo}  />
+          </a>
+          <nav className="text-white hidden  lg:flex  space-x-4 ml-5 mr-5">
+          <a href="#AboutUs"  className=" flex items-center">
+              AboutUs
             </a>
-            <a
-              href="#"
-              className="flex items-center
-          "
-            >
-              Safety Tips
+            <a href="#ContactUs" className="flex items-center">
+              ContactUs
             </a>
-            <a href="#" className="flex items-center">
+          <a href="#Brands" className="flex items-center">
               Brands
             </a>
-            <a href="#" className="flex items-center">
-              WholeSale
+            <a href="#OurCollections" className="flex items-center">
+              OurCollections
             </a>
-            <a href="#" className="flex items-center">
-              Download
+            <a href="#OurServices" className="flex items-center">
+              OurServices
             </a>
-            <a href="#" className="flex items-center">
-              About
-            </a>
-            <a href="#" className="flex items-center">
-              Contact
-            </a>
+            
+           
           </nav>
-          <div className=" flex  gap-5">
+          {/* <div className=" flex  gap-5">
             <button
               className="flex items-center
            bg-white text-black px-2 py-1 rounded-md"
@@ -63,7 +104,7 @@ function WaitingList() {
             >
               Register
             </button>
-          </div>
+          </div> */}
 
           <div className="lg:hidden">
             <button onClick={() => setIsOpen(!isOpen)} className="text-white">
@@ -75,52 +116,49 @@ function WaitingList() {
         {/* Mobile Menu */}
         {isOpen && (
           <nav
-            className="lg:hidden block text-black bg-white p-4
-       space-y-2 ml-2 mr-2"
+            className="lg:hidden flex flex-col justify-center items-center text-black bg-white p-4
+       space-y-6 ml-2 mr-2"
           >
-            <a href="#" className="flex items-center">
-              Products
+          <a href="#AboutUs"  className=" flex items-center">
+              AboutUs
             </a>
-            <a href="#" className="flex items-center">
-              Safety Tips
+            <a href="#ContactUs" className="flex items-center">
+              ContactUs
             </a>
-            <a href="#" className="flex items-center">
+          <a href="#Brands" className="flex items-center">
               Brands
             </a>
-            <a href="#" className="flex items-center">
-              WholeSale
+            <a href="#OurCollections" className="flex items-center">
+              OurCollections
             </a>
-            <a href="#" className="flex items-center">
-              Download
+            <a href="#OurServices" className="flex items-center">
+              OurServices
             </a>
-            <a href="#" className="flex items-center">
-              About
-            </a>
-            <a href="#" className="flex items-center">
-              Contact
-            </a>
+            
+            
           </nav>
         )}
       </header>
-      <div className=" absolute w-full h-[100%] sm:pt-40 top-0 grid sm:grid-cols-1 md:grid-cols-2 place-items-center place-self-center ">
+      <div className=" absolute w-full h-[100%] sm:pt-16 top-0 grid sm:grid-cols-1 md:grid-cols-2 place-items-center place-self-center ">
         <div className="   flex flex-col w-full h-auto px-8  items-center  text-white">
-          <h1 className="font-normal font-SpicyRice md:text-[80px] tracking-widest">
+          <h1 className="font-normal font-SpicyRice px-8 sm:text-[30px] md:text-[50px] lg:text-[80px] tracking-widest">
             Our New Website is On the Way
           </h1>
           
         </div>
         <div className="flex flex-col w-full font-normal font-SpicyRice h-auto items-center overflow-x-hidden  text-purple-700">
-          <form className="max-w-sm mx-auto">
+          <form onSubmit={(e) => handleSubmit(e)} className="max-w-sm mx-auto">
             <div className="mb-5">
               <label className="block  mb-2 text-2xl  text-white">
                 Name
               </label>
               <input
-                type="email"
-                id="email"
+                type="text"
+                value={name}
                 className="shadow-sm  border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Enter your name"
                 required
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="mb-5">
@@ -129,7 +167,8 @@ function WaitingList() {
               </label>
               <input
                 type="email"
-                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="shadow-sm  border text-white border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="you@gmail.com"
                 required
@@ -143,6 +182,8 @@ function WaitingList() {
               <select
                 name="cars"
                 id="cars"
+                onChange={(e) => setPurpose(e.target.value)}
+                value={purpose}
                 className="shadow-sm font-sm  border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               >
                 <option value="Retail" className="font-normal">
@@ -161,7 +202,9 @@ function WaitingList() {
                 Contact Number
               </label>
               <input
-                type="text"
+                type="number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 placeholder="Enter contact number"
                 className="shadow-sm  border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 required
@@ -179,21 +222,18 @@ function WaitingList() {
                 />
               </div>
               <label className="ms-2 text-sm font-normal text-white dark:text-gray-300">
-                I agree with the{" "}
-                <a
-                  href="#"
-                  className="text-blue-600 font-normal hover:underline dark:text-blue-500"
-                >
-                  terms and conditions
-                </a>
+                I agree with the terms and conditions
+                
               </label>
             </div>
             <button
               type="submit"
               className="text-white font-light bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm px-5 py-2.5 text-cente"
+              
             >
               Submit
             </button>
+            <ToastContainer />
           </form>
         </div>
       </div>
@@ -201,4 +241,4 @@ function WaitingList() {
   );
 }
 
-export default WaitingList;
+export default Header;

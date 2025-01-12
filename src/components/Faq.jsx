@@ -12,7 +12,7 @@ export default function Faq() {
  
   return (
     <div className="flex flex-col font-extralight font-SpicyRice py-10 items-center text-black justify-center bg-white">
-    <div className="text-3xl py-10 font-SpicyRice text-black ">
+    <div className="sm:text-[50px] px-16 md:text-[100px] py-10 font-SpicyRice text-black ">
         <h1>
             General Questions and Answers
         </h1>

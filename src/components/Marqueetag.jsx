@@ -41,7 +41,7 @@ function Marqueetag() {
 
   return (
     <div>
-      <div className="bg-white text-black text-3xl font-SpicyRice flex justify-center">
+      <div className="bg-white text-black sm:text-[50px] md:text-[100px] font-SpicyRice flex justify-center">
         <h1>Our Partners</h1>
       </div>
 
